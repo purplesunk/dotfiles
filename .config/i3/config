@@ -1,0 +1,158 @@
+#variables
+set $mod Mod4
+set $term alacritty
+set $menu "rofi -show drun"
+
+#font
+font pango:Lato, FontAwesome 10
+
+#autostart
+exec --no-startup-id dex-autostart --autostart --environment i3
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id nm-applet
+exec --no-startup-id picom -b
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+#settings
+floating_modifier $mod
+default_border pixel 3
+gaps inner 5
+gaps horizontal 10
+smart_borders no_gaps
+popup_during_fullscreen smart
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:"
+set $ws4 "4:"
+set $ws5 "5:"
+set $ws6 "6:"
+set $ws7 "7:"
+set $ws8 "8:"
+set $ws9 "9:"
+set $ws10 "10:"
+
+# switch to workspace
+bindsym $mod+1 workspace  $ws1
+bindsym $mod+2 workspace  $ws2
+bindsym $mod+3 workspace  $ws3
+bindsym $mod+4 workspace  $ws4
+bindsym $mod+5 workspace  $ws5
+bindsym $mod+6 workspace  $ws6
+bindsym $mod+7 workspace  $ws7
+bindsym $mod+8 workspace  $ws8
+bindsym $mod+9 workspace  $ws9
+bindsym $mod+0 workspace  $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace  $ws1
+bindsym $mod+Shift+2 move container to workspace  $ws2
+bindsym $mod+Shift+3 move container to workspace  $ws3
+bindsym $mod+Shift+4 move container to workspace  $ws4
+bindsym $mod+Shift+5 move container to workspace  $ws5
+bindsym $mod+Shift+6 move container to workspace  $ws6
+bindsym $mod+Shift+7 move container to workspace  $ws7
+bindsym $mod+Shift+8 move container to workspace  $ws8
+bindsym $mod+Shift+9 move container to workspace  $ws9
+bindsym $mod+Shift+0 move container to workspace  $ws10
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# class                 border  bground text    indicator child_border
+client.focused          #83CAFA #51A2DA #FFFFFF #83CAFA   #51A2DA
+client.focused_inactive #8C8C8C #4C4C4C #FFFFFF #4C4C4C   #8C8C8C
+client.unfocused        #4C4C4C #222222 #888888 #292D2E   #222222
+client.urgent           #EC69A0 #DB3279 #FFFFFF #DB3279   #DB3279
+client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
+
+client.background       #FFFFFF
+
+exec --no-startup-id xdg-user-dirs-update
+
+#Variables
+set $mod Mod4
+set $alt Mod1
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $audiocontrol $term --title pamix -e pamix
+
+#set $color-pick grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy 
+
+#Keybinds
+
+#System Keybinds
+    bindsym XF86MonBrightnessDown exec brightnessctl set 5%- #brightness down
+    bindsym $mod+F2 exec brightnessctl set 5%- #brightness down
+    bindsym XF86MonBrightnessUp exec brightnessctl set +5% #brightness up
+    bindsym $mod+F3 exec brightnessctl set +5% #brightness up
+
+    bindsym $mod+F12 exec confirmpoweroff
+    bindsym $mod+F11 exec confirmreboot
+    bindsym $mod+F10 exec confirm-sway-exit
+
+
+#Programs
+    bindsym $mod+Return exec $term 
+    bindsym $mod+Shift+q kill 
+    bindsym $mod+e exec --no-startup-id $menu 
+    bindsym $mod+Shift+c reload 
+    bindsym $mod+p exec $audiocontrol 
+    bindsym $mod+f exec firefox #open browser
+    bindsym $mod+n exec $term -e newsboat #open newsboat
+
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+
+    # Change view mode
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+    bindsym $mod+Shift+t layout tabbed
+    #bindsym $mod+d layout toggle split
+    bindsym $mod+Shift+f fullscreen
+    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+space focus mode_toggle
+
+    # Sizing Gaps
+    bindsym $mod+$alt+n gaps inner current set 0; gaps horizontal current set 0
+    bindsym $mod+$alt+g gaps inner current set 5; gaps horizontal current set 10
+    bindsym $mod+$alt+k gaps inner current plus 3;
+    bindsym $mod+$alt+j gaps inner current minus 3;
+
+# Scratchpad:
+    bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+minus scratchpad show
+
+# Resizing containers
+    bindsym $mod+ctrl+$left resize shrink width 10px
+    bindsym $mod+ctrl+$down resize grow height 10px
+    bindsym $mod+ctrl+$up resize shrink height 10px
+    bindsym $mod+ctrl+$right resize grow width 10px
+
+# More executing programs
+mode "execute" {
+    bindsym b exec brave
+    bindsym k exec keepassxc 
+#    bindsym s exec '/usr/bin/steam-runtime %U'
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+o mode "execute"
+
