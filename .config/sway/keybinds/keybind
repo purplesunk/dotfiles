@@ -1,0 +1,89 @@
+#Variables
+set $mod Mod4
+set $alt Mod1
+set $left h
+set $down j
+set $up k
+set $right l
+set $term foot
+set $menu wofi -I --show drun
+
+set $audiocontrol $term --title pulsemixer -e pulsemixer
+
+set $color-pick grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy 
+
+#Keybinds
+
+#System Keybinds
+    bindsym XF86MonBrightnessDown exec brightnessctl set 5%- #brightness down
+    bindsym $mod+F2 exec brightnessctl set 5%- #brightness down
+    bindsym XF86MonBrightnessUp exec brightnessctl set +5% #brightness up
+    bindsym $mod+F3 exec brightnessctl set +5% #brightness up
+
+    bindsym $mod+F12 exec confirmpoweroff
+    bindsym $mod+F11 exec confirmreboot
+    bindsym $mod+F10 exec confirm-sway-exit
+
+
+#Programs
+    bindsym $mod+Return exec $term #terminal emulator
+    bindsym $mod+Shift+q kill #kill program
+    bindsym $mod+e exec $menu #open runner
+    bindsym $mod+Shift+c reload 
+    bindsym $mod+p exec $audiocontrol #open audio settings
+    bindsym $mod+f exec firefox #open browser
+    bindsym $mod+n exec $term -e newsboat #open newsboat
+
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+
+    # Change view mode
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+    bindsym $mod+Shift+t layout tabbed
+    bindsym $mod+d layout toggle split
+    bindsym $mod+Shift+f fullscreen
+    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+space focus mode_toggle
+
+    # Sizing Gaps
+    bindsym $mod+$alt+n gaps inner current set 0; gaps horizontal current set 0
+    bindsym $mod+$alt+g gaps inner current set 5; gaps horizontal current set 10
+    bindsym $mod+$alt+k gaps inner current plus 3;
+    bindsym $mod+$alt+j gaps inner current minus 3;
+
+# Scratchpad:
+    bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+minus scratchpad show
+
+# Resizing containers
+    bindsym $mod+ctrl+$left resize shrink width 10px
+    bindsym $mod+ctrl+$down resize grow height 10px
+    bindsym $mod+ctrl+$up resize shrink height 10px
+    bindsym $mod+ctrl+$right resize grow width 10px
+
+# More executing programs
+mode "execute" {
+    bindsym b exec brave
+    bindsym k exec keepassxc 
+#    bindsym s exec '/usr/bin/steam-runtime %U'
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+o mode "execute"
+
+# Screenshots
+bindsym $mod+ctrl+s exec confirm-menu "Do you want to save the screenshoot?" screenshoot || screenshoot - | wl-copy
+bindsym $mod+ctrl+w exec confirm-menu "Do you want to save the screenshoot?" screenshoot-window || screenshoot-window - | wl-copy
+bindsym $mod+ctrl+x exec confirm-menu "Do you want to save the screenshoot?" screenshoot-select || screenshoot-select - | wl-copy
+bindsym $mod+ctrl+c exec $color-pick

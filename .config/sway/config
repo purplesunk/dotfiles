@@ -1,0 +1,61 @@
+# SWAY CONFIGURATION
+
+# AUTOSTART
+#exec gammastep &
+
+# SETTINGS
+floating_modifier Mod4
+default_border pixel 3
+gaps inner 5
+gaps horizontal 10
+smart_borders no_gaps
+popup_during_fullscreen smart
+
+# WINDOW OPTIONS
+for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="thunar" title="Progreso de operación de archivo"] floating enable
+for_window [app_id="Alacritty" title="pulsemixer"] floating enable
+for_window [app_id="qbittorrent" title="Elegir ruta"] floating enable
+
+# BACKGROUND
+output HDMI-A-1 mode 1920x1080 pos 1920 0
+# output * bg ~/.cache/wallpaper fill
+
+# SCREEN OFF WHEN IDLE
+exec swayidle -w \
+        timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+
+# INPUT CONFIGURATION
+input * {
+    xkb_layout "latam"
+#    xkb_options caps:escape
+}
+
+input <identifier> xkb_model "pc101"
+input type:touchpad {
+    tap enabled
+}
+
+# DISABLE MOUSE ACCELERATION
+input type:pointer {
+    accel_profile flat
+    pointer_accel 0
+}
+
+seat * hide_cursor 2400
+#seat * xcursor_theme 'capitaine-cursors'
+#seat * hide_cursor when-typing enable
+
+# GTK THEME
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+}
+
+
+include keybinds/keybind
+include keybinds/workspaces
+include themes/tomorrow-night
+include themes/theme
+include bar
+include /etc/sway/config.d/*
