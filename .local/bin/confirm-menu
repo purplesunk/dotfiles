@@ -1,0 +1,5 @@
+#!/bin/sh
+
+[ "`echo -e`" != "-e" ] && e="-e"
+
+[ $(echo $e "No\nYes" | bemenu -p "$1") = "Yes" ] && $2

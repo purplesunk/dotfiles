@@ -1,0 +1,3 @@
+#!/bin/sh
+
+confirm-menu "Do you want to reboot now?" "reboot"
