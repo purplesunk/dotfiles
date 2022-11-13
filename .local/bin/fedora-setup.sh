@@ -87,7 +87,9 @@ flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flath
 # fontawesome-fonts
 # pamix
 # pavucontrol
-# polkit-gnome
+# android-file-transfer
+# gvfs-mtp
+# gvfs-gphoto2
 #
 #
 # brave:

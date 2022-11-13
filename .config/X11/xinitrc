@@ -11,8 +11,9 @@ xrdb -load ~/.config/X11/xresources
 #export GDK_BACKEND=x11
 #exec gnome-session
 
-#exec awesome
-#exec i3
+nm-applet &
+
+exec awesome
 #exec startxfce4
 
 # The user may have their own clients they want to run.  If they don't,
