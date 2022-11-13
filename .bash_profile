@@ -21,6 +21,10 @@ export BROWSER=firefox
 export TERMINAL=alacritty
 export EDITOR=nvim
 
+# DESKTOP AND THEME:
+#export QT_QPA_PLATFORMTHEME=qt5ct
+#export XDG_CURRENT_DESKTOP=GNOME,XFCE
+
 # Clean up home:
 # NEWSBOAT NEEDS:
 # mkdir -p "$XDG_DATA_HOME"/newsboat "$XDG_CONFIG_HOME"/newsboat
