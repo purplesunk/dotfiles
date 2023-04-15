@@ -1,6 +1,5 @@
-#
+#!/bin/bash
 # ~/.bashrc
-#
 
 # Source global definitions
 [[ -f /etc/bashrc ]] && \
