@@ -31,7 +31,10 @@ alias ls='ls -h --color=auto --group-directories-first'
 alias ll='ls -la -h --color=auto --group-directories-first'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias nvidia-settings='nvidia-settings --config="$HOME_CONFIG_HOME"/nvidia/settings'
-alias daditosbb='cd /home/nach/Documents/universidad/utn-lab-01/lab-01-dados-diez-mil'
+
+# Alias para WSL
+alias projectos='/mnt/e/home/projects'
+alias practica='/mnt/e/home/utn/2do_cuatrimestre/02_programacion_utn/practica'
 
 alias fstp='nvim $HOME/.local/bin/fedora-setup.sh'
 
