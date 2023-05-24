@@ -1,18 +1,18 @@
 #!/bin/bash
 
-git clone --bare https://github.com/purplesunk/dotfiles $HOME/.dotfiles
+git clone --bare https://github.com/purplesunk/dotfiles "$HOME"/.dotfiles
 
 function config {
-   /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
+   /usr/bin/git --git-dir="$HOME"/.dotfiles/ --work-tree="$HOME" "$@"
 }
 
 if config checkout; then
   echo "Checked out config.";
   else
     echo "Backing up pre-existing dot files.";
-    OUTPUT=$(config checkout 2>&1 | egrep "\s+\." | awk {'print $1'})
-    echo "${OUTPUT}" | sed -E 's/(.*\/).*/\1/' | uniq | xargs -I{} mkdir -p $HOME/.config-backup/{}
-    echo "${OUTPUT}" | xargs -I{} mv {} $HOME/.config-backup/{}
+    OUTPUT=$(config checkout 2>&1 | grep -E "\s+\." | awk {'print $1'})
+    echo "${OUTPUT}" | sed -E 's/(.*\/).*/\1/' | uniq | xargs -I{} mkdir -p "$HOME"/.config-backup/{}
+    echo "${OUTPUT}" | xargs -I{} mv {} "$HOME"/.config-backup/{}
     config checkout
 fi;
 
