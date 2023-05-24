@@ -6,13 +6,14 @@ function config {
    /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
 }
 
-config checkout
-if [ $? = 0 ]; then
+if config checkout; then
   echo "Checked out config.";
   else
-    mkdir -p $/HOME.config-backup
     echo "Backing up pre-existing dot files.";
-    config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} $HOME/.config-backup/{}
+    OUTPUT=$(config checkout 2>&1 | egrep "\s+\." | awk {'print $1'})
+    echo "${OUTPUT}" | sed -E 's/(.*\/).*/\1/' | uniq | xargs -I{} mkdir -p $HOME/.config-backup/{}
+    echo "${OUTPUT}" | xargs -I{} mv {} $HOME/.config-backup/{}
+    config checkout
 fi;
-config checkout
+
 config config status.showUntrackedFiles no
