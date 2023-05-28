@@ -24,7 +24,7 @@ return {
                     shade = "dark",
                     percentage = 0.15,
                 },
-                no_italic = false, -- Force no italic
+                no_italic = true, -- Force no italic
                 no_bold = false, -- Force no bold
                 no_underline = false, -- Force no underline
                 styles = {
@@ -45,10 +45,10 @@ return {
                 custom_highlights = {},
                 integrations = {
                     cmp = true,
-                    -- gitsigns = true,
                     neotree = true,
                     telescope = true,
                     mason = true,
+                    treesitter = true,
                     -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
                 },
             })
