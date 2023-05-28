@@ -7,9 +7,12 @@ return {
         "MunifTanjim/nui.nvim",
     },
     config = function()
-        require('neo-tree').setup {}
---        vim.g.neo_treeg.emove_legacy_commands = 1
-        vim.keymap.set("n", "<leader>e", "<Cmd>Neotree<CR>", { desc = "Toggle NeoTree" })
+        vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
+        require('neo-tree').setup {
+            close_if_last_window = true,
+        }
+
+        vim.keymap.set("n", "<leader>b", "<Cmd>NeoTreeFocusToggle<CR>", { desc = "Toggle NeoTree" })
     end,
 }
