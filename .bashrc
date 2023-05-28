@@ -20,7 +20,8 @@ set vi-ins-mode-string "\e[6 q"
 shopt -s autocd # cd into directory just by typing the directory name.
 
 # prompt
-export PS1="\[$(tput bold)\]\[\033[38;5;137m\]\w\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;136m\]>\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;136m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
+# export PS1="\[$(tput bold)\]\[\033[38;5;137m\]\w\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;136m\]>\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;136m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
+export PS1="\e[35m\u\e[m \e[34m\W\e[m \e[31m󰘧\e[m " 
 
 # HISTORY THINGY:
 shopt -s histappend
