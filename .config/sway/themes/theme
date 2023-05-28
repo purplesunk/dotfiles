@@ -1,9 +1,12 @@
-#Color config:
-#font:
-font pango:sans-serif 13px
+# Theme config:
 
-#                       Border  BG      Text    Ind     Child Border
-client.focused          $base05 $base0D $base00 $base05 $base05
-client.focused_inactive $base01 $base01 $base05 $base01 $base01
-client.unfocused        $base01 $base00 $base05 $base01 $base01
-client.urgent           $base08 $base08 $base00 $base08 $base08
+# Font:
+font pango:ComicShannsMono Nerd Font 13px
+
+# target                 title     bg    text   indicator  border
+client.focused           $pink $base $text  $rosewater $pink
+client.focused_inactive  $mauve    $base $text  $rosewater $mauve
+client.unfocused         $mauve    $base $text  $rosewater $mauve
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
