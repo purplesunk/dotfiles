@@ -1,13 +1,17 @@
 # SWAY CONFIGURATION
 
 # AUTOSTART
-#exec gammastep &
+exec /usr/lib/polkit-kde-authentication-agent-1
+exec gammastep
+exec swww init
+exec swww img ~/wallpaper/windowsxp_cute.png
+exec udiskie
 
 # SETTINGS
 floating_modifier Mod4
-default_border pixel 3
-gaps inner 5
-gaps horizontal 10
+default_border pixel 2
+gaps inner 0
+gaps horizontal 0
 smart_borders no_gaps
 popup_during_fullscreen smart
 
@@ -19,7 +23,7 @@ for_window [app_id="qbittorrent" title="Elegir ruta"] floating enable
 
 # BACKGROUND
 output HDMI-A-1 mode 1920x1080 pos 1920 0
-# output * bg ~/.cache/wallpaper fill
+output * bg ~/.cache/wallpaper fill
 
 # SCREEN OFF WHEN IDLE
 exec swayidle -w \
@@ -44,18 +48,13 @@ input type:pointer {
 
 seat * hide_cursor 2400
 #seat * xcursor_theme 'capitaine-cursors'
-#seat * hide_cursor when-typing enable
+seat * hide_cursor when-typing enable
 
 # GTK THEME
 set $gnome-schema org.gnome.desktop.interface
 
-exec_always {
-}
-
-
 include keybinds/keybind
 include keybinds/workspaces
-include themes/tomorrow-night
+include themes/catppuccin-macchiato
 include themes/theme
-include bar
 include /etc/sway/config.d/*
