@@ -1,8 +1,8 @@
 return {
-    {
-        'RRethy/nvim-base16',
-        lazy = true,
-    },
+    -- {
+    --     'RRethy/nvim-base16',
+    --     lazy = true,
+    -- },
 
     {
         "catppuccin/nvim",
@@ -52,6 +52,7 @@ return {
                     -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
                 },
             })
+            vim.cmd.colorscheme('catppuccin')
         end,
 	},
 }

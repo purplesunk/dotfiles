@@ -30,6 +30,8 @@ vim.o.smartindent = true
 
 vim.wo.signcolumn = 'yes'
 
+vim.o.wrap = true
+
 -- Decrease update time
 vim.o.updatetime = 250
 vim.o.timeout = true
@@ -37,7 +39,6 @@ vim.o.timeoutlen = 300
 
 -- Better scroll and splits
 vim.o.scrolloff = 8
-vim.o.sidescrolloff = 8
 vim.o.splitbelow = true
 vim.o.splitright = true
 
@@ -51,9 +52,6 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
-
-require('config.colorscheme')
-
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
