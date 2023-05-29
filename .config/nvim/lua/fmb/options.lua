@@ -28,7 +28,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.smartindent = true
 
-vim.wo.signcolumn = 'yes'
+vim.wo.signcolumn = 'no'
 
 vim.o.wrap = true
 
@@ -52,6 +52,10 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
+
+vim.o.laststatus = 3
+
+vim.o.winbar = "%=%m %f%="
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
