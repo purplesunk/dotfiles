@@ -1,3 +1,7 @@
-require('config.options')
-require('config.keymaps')
-require('config.lazy')
+require('fmb.options')
+
+require('fmb.keymaps')
+
+require('fmb.lazy')
+
+require('fmb.plugin_configs')
