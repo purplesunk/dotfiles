@@ -51,6 +51,7 @@ export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
 export ICEAUTHORITY="$XDG_CACHE_HOME/ICEauthority"
 
 # START XORG:
-#if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-#	startx "$XDG_CONFIG_HOME/X11/xinitrc" -- "$XDG_CONFIG_HOME/X11/xserverrc" vt1
-#fi
+if [ "$(tty)" = "/dev/tty1" ]; then
+	# startx "$XDG_CONFIG_HOME/X11/xinitrc" -- "$XDG_CONFIG_HOME/X11/xserverrc" vt1
+    startw
+fi
