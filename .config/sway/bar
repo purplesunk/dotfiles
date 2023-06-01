@@ -3,6 +3,7 @@
 # WAYBAR
 bar {
      swaybar_command waybar
+     position top
 }
 
 

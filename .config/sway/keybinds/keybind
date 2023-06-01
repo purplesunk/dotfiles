@@ -12,6 +12,7 @@ set $audiocontrol $term --title pulsemixer -e pulsemixer
 
 # set $color-pick grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy 
 
+
 #Keybinds
 
 #System Keybinds
@@ -36,11 +37,14 @@ set $audiocontrol $term --title pulsemixer -e pulsemixer
     bindsym $mod+F11                exec confirmreboot
     bindsym $mod+F10                exec confirm-sway-exit
 
+# Waybar
+bindsym $mod+z exec killall -SIGUSR1 waybar
 
 #Programs
     bindsym $mod+Return exec $term #terminal emulator
     bindsym $mod+Shift+q kill #kill program
-    bindsym $mod+e exec $menu #open runner
+    bindsym $mod+e exec $menu #open menu launcher
+    bindsym $mod+r exec wofi --show run #open runner
     bindsym $mod+Shift+c reload 
     bindsym $mod+p exec $audiocontrol #open audio settings
     bindsym $mod+f exec firefox #open browser
