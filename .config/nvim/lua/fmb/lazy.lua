@@ -81,6 +81,8 @@ lazy.setup({
             'L3MON4D3/LuaSnip',
             'saadparwaiz1/cmp_luasnip',
             -- Adds LSP completion capabilities
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
             'hrsh7th/cmp-nvim-lsp',
             -- Adds a number of user-friendly snippets
             'rafamadriz/friendly-snippets',
@@ -118,5 +120,10 @@ lazy.setup({
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
         }
-    }
+    },
+    -- detect shiftwidth and tabstop automatically
+    'tpope/vim-sleuth',
+
+    require('fmb.plugin_configs.debug'),
+    require('fmb.plugin_configs.autoformat')
 })
