@@ -38,7 +38,14 @@ local on_attach = function(_, bufnr)
 end
 
 local servers = {
-    clangd = {},
+    clangd = {
+        cmd = {
+            'clangd',
+            '--background-index',
+            '--enable-config',
+            '--fallback-style=google'
+        }
+    },
     -- gopls = {},
     -- pyright = {},
     -- rust_analyzer = {},
