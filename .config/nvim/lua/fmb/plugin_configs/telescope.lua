@@ -2,8 +2,28 @@
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
     defaults = {
+        sort_mru = true,
+        sorting_strategy = 'ascending',
+        layout_config = {
+            prompt_position = 'top',
+        },
+        --borderchars = {
+        --prompt = u.border_chars_outer_thin_telescope,
+        --results = u.border_chars_outer_thin_telescope,
+        --preview = u.border_chars_outer_thin_telescope,
+        --},
+        border = true,
+        multi_icon = '',
+        entry_prefix = '   ',
+        prompt_prefix = '   ',
+        selection_caret = '  ',
+        hl_result_eol = true,
+        results_title = '',
+        winblend = 0,
+        wrap_results = true,
         mappings = {
             i = {
+                ['<Esc>'] = require('telescope.actions').close,
                 ['<C-u>'] = false,
                 ['<C-d>'] = false,
             },
@@ -23,7 +43,7 @@ vim.keymap.set('n', '<leader>/', function()
         winblend = 10,
         previewer = false,
     })
-    end, { desc = '[/] Fuzzily search in current buffer' })
+end, { desc = '[/] Fuzzily search in current buffer' })
 
 vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
