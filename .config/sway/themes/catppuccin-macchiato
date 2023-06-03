@@ -23,3 +23,4 @@ set $surface0  #363a4f
 set $base      #24273a
 set $mantle    #1e2030
 set $crust     #181926
+set $baset     #24273aeb
