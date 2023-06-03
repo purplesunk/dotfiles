@@ -1,0 +1,173 @@
+@import "macchiato.css";
+
+* {
+    font-family: Ubuntu Nerd Font Propo;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+window#waybar {
+    background-image: linear-gradient(to top, @crust, @base);
+    border: none;
+    padding: 0;
+    color: @text;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+/* If someday i want gaps again
+window#waybar {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color: @text;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar > box {
+    margin: 0px 0px 8px 0px;
+    background-image: linear-gradient(to top, @crust, @base);
+    box-shadow: 0px 4px 2px 1px #101010;
+}
+*/
+
+.modules-left,
+.modules-right {
+}
+
+.modules-left {
+    padding-left: 5px;
+}
+
+.modules-right {
+    padding-right: 5px;
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background-color: inherit;
+}
+
+#workspaces button {
+    color: @lavender;
+    padding: 0 3px;
+}
+
+#workspaces button:hover {
+    background: transparent;
+    border: transparent;
+    box-shadow: inherit;
+    padding: 0 3px;
+    color: @green;
+    text-shadow: inherit;
+}
+
+#workspaces button.focused {
+    color: @blue;
+}
+
+#workspaces button.urgent {
+    color: @red;
+}
+
+#window {
+    font-weight: bold;
+}
+
+#mode {
+}
+
+#clock,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#pulseaudio,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad {
+    padding: 0px 10px;
+}
+
+#workspaces {
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 5px;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 5px;
+}
+
+#clock {
+    color: @pink;
+}
+
+#cpu {
+    color: @teal;
+}
+
+#memory {
+    color: @mauve;
+}
+
+#backlight {
+    color: @yellow;
+}
+
+#pulseaudio {
+    color: @flamingo;
+}
+
+#pulseaudio.muted {
+    color: @crust;
+}
+
+#temperature {
+    color: @sapphire;
+}
+
+#temperature.critical {
+    color: @red;
+}
+
+#tray {
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+#idle_inhibitor {
+    opacity: 0;
+}
+
+#idle_inhibitor.activated {
+    opacity: 1;
+}
+
+#scratchpad {
+}
+
+#scratchpad.empty {
+    background-color: transparent;
+}
+
+#custom-powermenu,
+#custom-launcher {
+    padding: 0 5px;
+}
