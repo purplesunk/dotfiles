@@ -1,18 +1,25 @@
 @import "macchiato.css";
 
 * {
-    font-family: Ubuntu Nerd Font Propo;
+    font-family: JetBrainsMono Nerd Font Propo;
     font-size: 12px;
     font-weight: 500;
 }
 
 window#waybar {
-    background-image: linear-gradient(to top, @crust, @base);
+    /* background-image: linear-gradient(to top, @crust, @base); */
+    background-color: @crust;
     border: none;
     padding: 0;
     color: @text;
     transition-property: background-color;
     transition-duration: .5s;
+}
+
+window#waybar.empty {
+}
+
+window#waybar.hidden {
 }
 
 /* If someday i want gaps again
@@ -32,21 +39,8 @@ window#waybar > box {
 }
 */
 
-.modules-left,
-.modules-right {
-}
-
-.modules-left {
-    padding-left: 5px;
-}
-
-.modules-right {
-    padding-right: 5px;
-}
-
 button {
     border: none;
-    border-radius: 10px;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
@@ -76,13 +70,10 @@ button:hover {
     color: @red;
 }
 
-#window {
-    font-weight: bold;
-}
-
 #mode {
 }
 
+#workspaces,
 #clock,
 #cpu,
 #memory,
@@ -92,29 +83,27 @@ button:hover {
 #tray,
 #mode,
 #idle_inhibitor,
-#scratchpad {
-    padding: 0px 10px;
+#scratchpad,
+#custom-launcher,
+#custom-powermenu {
+    background-color: @base;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    padding: 0px 8px;
 }
 
 #workspaces {
-}
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 5px;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 5px;
+    padding: 0 5px;
 }
 
 #clock {
     color: @pink;
+    border-radius: 0px 8px 8px 0px;
 }
 
 #cpu {
     color: @teal;
+    border-radius: 8px 0px 0px 8px;
 }
 
 #memory {
@@ -127,6 +116,7 @@ button:hover {
 
 #pulseaudio {
     color: @flamingo;
+    border-radius: 8px 0px 0px 8px;
 }
 
 #pulseaudio.muted {
@@ -135,6 +125,7 @@ button:hover {
 
 #temperature {
     color: @sapphire;
+    border-radius: 0px 8px 8px 0px;
 }
 
 #temperature.critical {
@@ -168,6 +159,19 @@ button:hover {
 }
 
 #custom-powermenu,
-#custom-launcher {
-    padding: 0 5px;
+#custom-launcher,
+#tray {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#custom-powermenu,
+#custom-launcher,
+#workspaces,
+#tray {
+    border-radius: 8px;
+}
+
+#custom-powermenu {
+    color: @red;
 }
