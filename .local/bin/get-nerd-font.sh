@@ -7,7 +7,7 @@ if [ "$#" -eq 0 ];then
     exit 1
 fi
 
-fonts_dir="$HOME"/.local/share/fonts
+fonts_dir="$XDG_DATA_HOME"/fonts
 [[ ! -d "$fonts_dir" ]] && mkdir -p "$fonts_dir"
 
 # Make something to get the lastest url of the releases/tag curl releases/tag 
