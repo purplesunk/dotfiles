@@ -21,7 +21,8 @@ shopt -s autocd # cd into directory just by typing the directory name.
 
 # prompt
 # export PS1="\[$(tput bold)\]\[\033[38;5;137m\]\w\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;136m\]>\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;136m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
-export PS1="\e[35m\]\u\e[m\] \e[34m\]\W\e[m\] \e[31m\]󰘧\e[m\] " 
+# export PS1="\e[35m\]\u\e[m\] \e[34m\]\W\e[m\] \e[31m\]󰘧\e[m\] " 
+export PS1="> "
 
 # HISTORY THINGY:
 shopt -s histappend
@@ -40,3 +41,5 @@ alias practica='/mnt/e/home/utn/2do_cuatrimestre/02_programacion_utn/practica'
 alias fstp='nvim $HOME/.local/bin/fedora-setup.sh'
 
 unset rc
+
+eval "$(starship init bash)"
