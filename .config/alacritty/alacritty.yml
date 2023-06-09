@@ -5,11 +5,11 @@ window:
     columns: 0
     lines: 0
   padding:
-    x: 8
-    y: 8
+    x: 10
+    y: 5
   dynamic_padding: true
   decorations: full
-  opacity: 0.92
+  opacity: 0.95
   history: 10000
   multiplier: 3
 
