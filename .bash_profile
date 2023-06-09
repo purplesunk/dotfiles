@@ -8,7 +8,6 @@
 # Adds `~/.local/bin` to $PATH
 PATH="$PATH:/usr/local/bin:/home/$USER/.local/bin"
 
-
 # BASE DIRECTORIES:
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE_HOME="$HOME"/.cache
@@ -19,10 +18,6 @@ export XDG_STATE_HOME="$HOME"/.local/state
 export BROWSER=firefox
 export TERMINAL=alacritty
 export EDITOR=nvim
-
-# DESKTOP AND THEME:
-#export QT_QPA_PLATFORMTHEME=qt5ct
-#export XDG_CURRENT_DESKTOP=GNOME,XFCE
 
 # Clean up home:
 # NEWSBOAT NEEDS:
