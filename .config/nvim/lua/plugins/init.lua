@@ -68,7 +68,7 @@ return {
                 },
                 lualine_c = {},
                 lualine_x = {},
-                lualine_y = {'branch'},
+                lualine_y = {'progress'},
                 lualine_z = {'location'}
             },
             tabline = {},
