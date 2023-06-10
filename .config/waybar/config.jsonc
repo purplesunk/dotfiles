@@ -92,7 +92,7 @@
     },
     "custom/launcher": {
         "format": "",
-        "on-click": "wofi",
+        "on-click": "fuzzel",
         "tooltip": true,
         "tooltip-format": "Launch a Program"
     }
