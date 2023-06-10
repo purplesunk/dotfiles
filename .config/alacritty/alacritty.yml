@@ -5,8 +5,8 @@ window:
     columns: 0
     lines: 0
   padding:
-    x: 10
-    y: 5
+    x: 0
+    y: 0
   dynamic_padding: true
   decorations: full
   opacity: 0.95
