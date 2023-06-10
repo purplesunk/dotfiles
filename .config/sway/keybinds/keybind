@@ -6,7 +6,8 @@ set $down j
 set $up k
 set $right l
 set $term alacritty
-set $menu wofi -I --show drun
+# set $menu wofi -I --show drun
+set $menu fuzzel
 
 set $audiocontrol $term --title pulsemixer -e pulsemixer
 
@@ -44,7 +45,7 @@ bindsym $mod+z exec killall -SIGUSR1 waybar
     bindsym $mod+Return exec $term #terminal emulator
     bindsym $mod+Shift+q kill #kill program
     bindsym $mod+e exec $menu #open menu launcher
-    bindsym $mod+r exec wofi --show run #open runner
+    # bindsym $mod+r exec fuzzel -d #open runner # With fuzzel can run any command with the normal mode
     bindsym $mod+Shift+c reload 
     bindsym $mod+p exec $audiocontrol #open audio settings
     bindsym $mod+f exec firefox #open browser
