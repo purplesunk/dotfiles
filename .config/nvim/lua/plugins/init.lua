@@ -135,6 +135,7 @@ return {
     },
     -- detect shiftwidth and tabstop automatically
     'tpope/vim-sleuth',
+    'tpope/vim-surround',
 
     -- require('plugins.configs.debug'),
 }
