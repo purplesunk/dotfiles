@@ -36,7 +36,7 @@ return {
             -- Automatically install LSPs to stdpath for neovim
             { 'williamboman/mason.nvim', config = true },
             'williamboman/mason-lspconfig.nvim',
-            { 'j-hui/fidget.nvim', opts = { tag = 'legacy'} },
+            -- { 'j-hui/fidget.nvim', opts = { tag = 'legacy'} },
             'folke/neodev.nvim',
         },
         config = function()
@@ -125,6 +125,7 @@ return {
     {
         "nvim-neo-tree/neo-tree.nvim",
         version = "*",
+        lazy = true,
         dependencies = {
             "nvim-tree/nvim-web-devicons",
             "MunifTanjim/nui.nvim",
