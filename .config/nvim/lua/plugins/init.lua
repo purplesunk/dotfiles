@@ -26,7 +26,7 @@ return {
     },
     {
         'lukas-reineke/indent-blankline.nvim',
-        opts = { show_trailing_blankline_indent = false }
+        -- opts = { show_trailing_blankline_indent = false }
     },
     { 'numToStr/Comment.nvim', opts = {} },
     {
@@ -36,44 +36,44 @@ return {
             -- Automatically install LSPs to stdpath for neovim
             { 'williamboman/mason.nvim', config = true },
             'williamboman/mason-lspconfig.nvim',
-            { 'j-hui/fidget.nvim',       opts = {} },
+            { 'j-hui/fidget.nvim', opts = { tag = 'legacy'} },
             'folke/neodev.nvim',
         },
         config = function()
             require('plugins.configs.lsp')
         end,
     },
-    {
-        'nvim-lualine/lualine.nvim',
-        opts = {
-            options = {
-                theme = 'catppuccin',
-                icons_enabled = true,
-                component_separators = ' ',
-                section_separators = ' ',
-                disabled_filetypes = {'neo-tree', 'TelescopePrompt'},
-                refresh = {
-                    statusline = 1000,
-                }
-            },
-            sections = {
-                lualine_a = {'mode'},
-                lualine_b = {
-                    {
-                        'buffers',
-                        show_filename_only = false,
-                        mode = 2,
-                        use_mode_colors = true,
-                    },
-                },
-                lualine_c = {},
-                lualine_x = {},
-                lualine_y = {'progress'},
-                lualine_z = {'location'}
-            },
-            tabline = {},
-        },
-    },
+    -- {
+    --     'nvim-lualine/lualine.nvim',
+    --     opts = {
+    --         options = {
+    --             theme = 'catppuccin',
+    --             icons_enabled = true,
+    --             component_separators = ' ',
+    --             section_separators = ' ',
+    --             disabled_filetypes = {'neo-tree', 'TelescopePrompt'},
+    --             refresh = {
+    --                 statusline = 1000,
+    --             }
+    --         },
+    --         sections = {
+    --             lualine_a = {'mode'},
+    --             lualine_b = {
+    --                 {
+    --                     'buffers',
+    --                     show_filename_only = false,
+    --                     mode = 2,
+    --                     use_mode_colors = true,
+    --                 },
+    --             },
+    --             lualine_c = {},
+    --             lualine_x = {},
+    --             lualine_y = {'progress'},
+    --             lualine_z = {'location'}
+    --         },
+    --         tabline = {},
+    --     },
+    -- },
     {
         -- Autocompletion
         'hrsh7th/nvim-cmp',
