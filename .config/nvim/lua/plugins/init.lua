@@ -1,14 +1,35 @@
 return {
-    "nvim-lua/plenary.nvim",
     {
-        "catppuccin/nvim",
-        name = "catppuccin",
+        "neanias/everforest-nvim",
+        version = false,
         lazy = false,
-        priority = 1000,
+        priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
-            require('plugins.configs.catppuccin')
+            require("everforest").setup({
+                background = "hard",
+                transparent_background_level = 0,
+                italics = false,
+                disable_italic_comments = true,
+            })
+            vim.cmd([[colorscheme everforest]])
         end,
     },
+    {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+    },
+    "nvim-lua/plenary.nvim",
+    -- {
+    --     "catppuccin/nvim",
+    --     name = "catppuccin",
+    --     lazy = false,
+    --     priority = 1000,
+    --     config = function()
+    --         require('plugins.configs.catppuccin')
+    --     end,
+    -- },
     {
         "windwp/nvim-autopairs",
         config = function()
@@ -26,7 +47,7 @@ return {
     },
     {
         'lukas-reineke/indent-blankline.nvim',
-        -- opts = { show_trailing_blankline_indent = false }
+        opts = { show_trailing_blankline_indent = false }
     },
     { 'numToStr/Comment.nvim', opts = {} },
     {
@@ -36,7 +57,7 @@ return {
             -- Automatically install LSPs to stdpath for neovim
             { 'williamboman/mason.nvim', config = true },
             'williamboman/mason-lspconfig.nvim',
-            -- { 'j-hui/fidget.nvim', opts = { tag = 'legacy'} },
+            { 'j-hui/fidget.nvim' },
             'folke/neodev.nvim',
         },
         config = function()
@@ -44,35 +65,10 @@ return {
         end,
     },
     -- {
-    --     'nvim-lualine/lualine.nvim',
-    --     opts = {
-    --         options = {
-    --             theme = 'catppuccin',
-    --             icons_enabled = true,
-    --             component_separators = ' ',
-    --             section_separators = ' ',
-    --             disabled_filetypes = {'neo-tree', 'TelescopePrompt'},
-    --             refresh = {
-    --                 statusline = 1000,
-    --             }
-    --         },
-    --         sections = {
-    --             lualine_a = {'mode'},
-    --             lualine_b = {
-    --                 {
-    --                     'buffers',
-    --                     show_filename_only = false,
-    --                     mode = 2,
-    --                     use_mode_colors = true,
-    --                 },
-    --             },
-    --             lualine_c = {},
-    --             lualine_x = {},
-    --             lualine_y = {'progress'},
-    --             lualine_z = {'location'}
-    --         },
-    --         tabline = {},
-    --     },
+        -- 'nvim-lualine/lualine.nvim',
+        -- config = function ()
+        --     require('plugins.configs.lualine')
+        -- end,
     -- },
     {
         -- Autocompletion
@@ -105,7 +101,6 @@ return {
                     return vim.fn.executable 'make' == 1
                 end,
             },
-
         },
         config = function()
             require('plugins.configs.telescope')
@@ -122,17 +117,17 @@ return {
             require('plugins.configs.treesitter')
         end,
     },
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        version = "*",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-            "MunifTanjim/nui.nvim",
-        },
-        config = function()
-            require('plugins.configs.neo-tree')
-        end,
-    },
+    -- {
+    --     "nvim-neo-tree/neo-tree.nvim",
+    --     version = "*",
+    --     dependencies = {
+    --         "nvim-tree/nvim-web-devicons",
+    --         "MunifTanjim/nui.nvim",
+    --     },
+    --     config = function()
+    --         require('plugins.configs.neo-tree')
+    --     end,
+    -- },
     -- detect shiftwidth and tabstop automatically
     'tpope/vim-sleuth',
     'tpope/vim-surround',
