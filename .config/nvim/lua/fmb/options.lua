@@ -50,7 +50,7 @@ vim.o.backspace = 'indent,eol,start'
 vim.o.termguicolors = true
 
 -- Global status
-vim.o.laststatus = 3
+vim.o.laststatus = 2
 require('fmb.statusline')
 
 -- [[ Highlight on yank ]]
