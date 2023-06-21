@@ -125,7 +125,6 @@ return {
     {
         "nvim-neo-tree/neo-tree.nvim",
         version = "*",
-        lazy = true,
         dependencies = {
             "nvim-tree/nvim-web-devicons",
             "MunifTanjim/nui.nvim",
