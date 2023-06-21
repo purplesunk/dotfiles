@@ -7,11 +7,13 @@ require('telescope').setup {
         layout_config = {
             prompt_position = 'top',
         },
-        border = true,
-        entry_prefix = '   ',
+        entry_prefix = '  ',
         hl_result_eol = true,
         results_title = '',
+        path_display = { "truncate" },
         winblend = 0,
+        border = {},
+        borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
         wrap_results = true,
         mappings = {
             n = {
