@@ -48,7 +48,12 @@ return {
         'neovim/nvim-lspconfig',
         dependencies = {
             -- Automatically install LSPs to stdpath for neovim
-            { 'williamboman/mason.nvim', config = true },
+            {
+                'williamboman/mason.nvim',
+                cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+                event = { "VeryLazy" },
+                config = true
+            },
             'williamboman/mason-lspconfig.nvim',
             { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
             'folke/neodev.nvim',
@@ -116,14 +121,10 @@ return {
     -- },
 
     {
-        "nvim-neo-tree/neo-tree.nvim",
+        "nvim-tree/nvim-tree.lua",
         version = "*",
-        cmd = 'NeoTreeFocusToggle',
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-        },
         config = function()
-            require('plugins.configs.neo-tree')
+            require("nvim-tree").setup {}
         end,
     },
 
