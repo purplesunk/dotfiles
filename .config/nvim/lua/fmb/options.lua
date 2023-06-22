@@ -5,6 +5,7 @@ vim.o.mouse = 'a'
 -- Set highlight on search
 vim.o.hlsearch = false
 vim.o.incsearch = true
+vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Make line numbers default
