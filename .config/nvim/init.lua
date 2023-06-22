@@ -1,8 +1,7 @@
-require('fmb.options')
-
-require('fmb.keymaps')
 
 require('fmb.disable-builtin')
+require('fmb.options')
+require('fmb.keymaps')
 
 -- Install lazy.nvim if not already installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
