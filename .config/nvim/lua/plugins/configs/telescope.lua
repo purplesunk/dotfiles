@@ -4,6 +4,8 @@ require('telescope').setup {
     defaults = {
         sort_mru = true,
         sorting_strategy = 'ascending',
+        prompt_prefix = '❯ ',
+        selection_caret = '❯ ',
         layout_config = {
             prompt_position = 'top',
         },
@@ -13,7 +15,7 @@ require('telescope').setup {
         path_display = { "truncate" },
         winblend = 0,
         border = {},
-        borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+        borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
         wrap_results = true,
         mappings = {
             n = {
