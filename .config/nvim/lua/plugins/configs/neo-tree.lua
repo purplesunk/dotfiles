@@ -36,5 +36,3 @@ require('neo-tree').setup {
         },
     },
 }
-
-vim.keymap.set("n", "<leader>b", "<Cmd>NeoTreeFocusToggle<CR>", { desc = "Toggle NeoTree" })
