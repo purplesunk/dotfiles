@@ -27,6 +27,7 @@ vim.o.smartindent = true
 vim.o.wrap = false
 vim.o.showmatch = true
 vim.wo.signcolumn = 'yes'
+vim.wo.colorcolumn = 80
 
 -- Decrease update time
 vim.o.updatetime = 250
