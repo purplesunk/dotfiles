@@ -1,4 +1,7 @@
 return {
+    'dstein64/vim-startuptime',
+    'tpope/vim-sleuth',
+    'tpope/vim-surround',
     {
         "neanias/everforest-nvim",
         version = false,
@@ -14,12 +17,12 @@ return {
             vim.cmd([[colorscheme everforest]])
         end,
     },
-    {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000,
-        opts = {},
-    },
+    -- {
+    --     "folke/tokyonight.nvim",
+    --     lazy = false,
+    --     priority = 1000,
+    --     opts = {},
+    -- },
     "nvim-lua/plenary.nvim",
     -- {
     --     "catppuccin/nvim",
@@ -30,21 +33,6 @@ return {
     --         require('plugins.configs.catppuccin')
     --     end,
     -- },
-    {
-        "windwp/nvim-autopairs",
-        config = function()
-            require('plugins.configs.autopairs')
-        end,
-    },
-    {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-        init = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-        end,
-        opts = {}
-    },
     {
         'lukas-reineke/indent-blankline.nvim',
         opts = { show_trailing_blankline_indent = false }
@@ -57,19 +45,13 @@ return {
             -- Automatically install LSPs to stdpath for neovim
             { 'williamboman/mason.nvim', config = true },
             'williamboman/mason-lspconfig.nvim',
-            { 'j-hui/fidget.nvim' },
+            { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
             'folke/neodev.nvim',
         },
         config = function()
             require('plugins.configs.lsp')
         end,
     },
-    -- {
-        -- 'nvim-lualine/lualine.nvim',
-        -- config = function ()
-        --     require('plugins.configs.lualine')
-        -- end,
-    -- },
     {
         -- Autocompletion
         'hrsh7th/nvim-cmp',
@@ -118,19 +100,39 @@ return {
         end,
     },
     -- {
-    --     "nvim-neo-tree/neo-tree.nvim",
-    --     version = "*",
-    --     dependencies = {
-    --         "nvim-tree/nvim-web-devicons",
-    --         "MunifTanjim/nui.nvim",
-    --     },
-    --     config = function()
-    --         require('plugins.configs.neo-tree')
+    --     'nvim-lualine/lualine.nvim',
+    --     config = function ()
+    --         require('plugins.configs.lualine')
     --     end,
     -- },
-    -- detect shiftwidth and tabstop automatically
-    'tpope/vim-sleuth',
-    'tpope/vim-surround',
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        version = "*",
+        cmd = 'NeoTreeFocusToggle',
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+        },
+        config = function()
+            require('plugins.configs.neo-tree')
+        end,
+    },
+
+    {
+        "windwp/nvim-autopairs",
+        config = function()
+            require('plugins.configs.autopairs')
+        end,
+    },
+
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+        opts = {}
+    },
 
     -- require('plugins.configs.debug'),
 }
