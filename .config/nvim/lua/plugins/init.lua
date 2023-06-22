@@ -1,7 +1,6 @@
 return {
     'dstein64/vim-startuptime',
-    'tpope/vim-sleuth',
-    'tpope/vim-surround',
+
     {
         "neanias/everforest-nvim",
         version = false,
@@ -17,13 +16,14 @@ return {
             vim.cmd([[colorscheme everforest]])
         end,
     },
+
     -- {
     --     "folke/tokyonight.nvim",
     --     lazy = false,
     --     priority = 1000,
     --     opts = {},
     -- },
-    "nvim-lua/plenary.nvim",
+
     -- {
     --     "catppuccin/nvim",
     --     name = "catppuccin",
@@ -33,11 +33,16 @@ return {
     --         require('plugins.configs.catppuccin')
     --     end,
     -- },
-    {
-        'lukas-reineke/indent-blankline.nvim',
-        opts = { show_trailing_blankline_indent = false }
-    },
-    { 'numToStr/Comment.nvim', opts = {} },
+
+    -- {
+    --     'lukas-reineke/indent-blankline.nvim',
+    --     opts = { show_trailing_blankline_indent = false }
+    -- },
+
+    "nvim-lua/plenary.nvim",
+    'tpope/vim-sleuth',
+    'tpope/vim-surround',
+
     {
         -- LSP Configuration & Plugins
         'neovim/nvim-lspconfig',
@@ -52,6 +57,7 @@ return {
             require('plugins.configs.lsp')
         end,
     },
+
     {
         -- Autocompletion
         'hrsh7th/nvim-cmp',
@@ -70,6 +76,7 @@ return {
             require('plugins.configs.cmp')
         end,
     },
+
     {
         -- Fuzzy Finder (files, lsp, etc)
         'nvim-telescope/telescope.nvim',
@@ -88,6 +95,7 @@ return {
             require('plugins.configs.telescope')
         end,
     },
+
     {
         -- Highlight, edit, and navigate code
         'nvim-treesitter/nvim-treesitter',
@@ -99,12 +107,14 @@ return {
             require('plugins.configs.treesitter')
         end,
     },
+
     -- {
     --     'nvim-lualine/lualine.nvim',
     --     config = function ()
     --         require('plugins.configs.lualine')
     --     end,
     -- },
+
     {
         "nvim-neo-tree/neo-tree.nvim",
         version = "*",
@@ -123,6 +133,8 @@ return {
             require('plugins.configs.autopairs')
         end,
     },
+
+    { 'numToStr/Comment.nvim', opts = {} },
 
     {
         "folke/which-key.nvim",
