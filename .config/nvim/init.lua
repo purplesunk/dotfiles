@@ -1,4 +1,3 @@
-
 require('fmb.disable-builtin')
 require('fmb.options')
 require('fmb.keymaps')
