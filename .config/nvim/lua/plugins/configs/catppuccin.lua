@@ -28,8 +28,6 @@ require("catppuccin").setup({
     custom_highlights = {},
     integrations = {
         cmp = true,
-        neotree = true,
-        telescope = true,
         mason = true,
         treesitter = true,
         which_key = true,
