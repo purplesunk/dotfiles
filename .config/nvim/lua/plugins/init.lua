@@ -1,21 +1,21 @@
 return {
     'dstein64/vim-startuptime',
 
-    {
-        "neanias/everforest-nvim",
-        version = false,
-        lazy = false,
-        priority = 1000, -- make sure to load this before all the other start plugins
-        config = function()
-            require("everforest").setup({
-                background = "hard",
-                transparent_background_level = 0,
-                italics = false,
-                disable_italic_comments = true,
-            })
-            vim.cmd([[colorscheme everforest]])
-        end,
-    },
+    -- {
+    --     "neanias/everforest-nvim",
+    --     version = false,
+    --     lazy = false,
+    --     priority = 1000, -- make sure to load this before all the other start plugins
+    --     config = function()
+    --         require("everforest").setup({
+    --             background = "hard",
+    --             transparent_background_level = 0,
+    --             italics = false,
+    --             disable_italic_comments = true,
+    --         })
+    --         vim.cmd([[colorscheme everforest]])
+    --     end,
+    -- },
 
     -- {
     --     "folke/tokyonight.nvim",
@@ -24,15 +24,15 @@ return {
     --     opts = {},
     -- },
 
-    -- {
-    --     "catppuccin/nvim",
-    --     name = "catppuccin",
-    --     lazy = false,
-    --     priority = 1000,
-    --     config = function()
-    --         require('plugins.configs.catppuccin')
-    --     end,
-    -- },
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require('plugins.configs.catppuccin')
+        end,
+    },
 
     -- {
     --     'lukas-reineke/indent-blankline.nvim',
