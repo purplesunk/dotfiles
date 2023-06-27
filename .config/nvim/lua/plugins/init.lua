@@ -1,6 +1,4 @@
 return {
-    'dstein64/vim-startuptime',
-
     -- {
     --     "neanias/everforest-nvim",
     --     version = false,
@@ -33,11 +31,6 @@ return {
             require('plugins.configs.catppuccin')
         end,
     },
-
-    -- {
-    --     'lukas-reineke/indent-blankline.nvim',
-    --     opts = { show_trailing_blankline_indent = false }
-    -- },
 
     "nvim-lua/plenary.nvim",
     'tpope/vim-sleuth',
