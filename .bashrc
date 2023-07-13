@@ -23,7 +23,7 @@ PURPLE="\033[0;35m"
 CYAN="\033[0;36m"
 LGRAY="\033[0;37m"
 NC="\033[0m"
-export PS1="\[${PURPLE}\]\u\[${NC}\]\[${ORANGE}\]@\[${NC}\]\[${BLUE}\]\h\[${NC}\] \[${GREEN}\]\w\[${NC}\] \[${ORANGE}\]\$\[${NC}\] "
+export PS1="\[${BLUE}\]\u\[${NC}\]\[${ORANGE}\]@\[${NC}\]\[${PURPLE}\]\h\[${NC}\] \[${GREEN}\]\w\[${NC}\] \[${ORANGE}\]\$\[${NC}\] "
 
 # HISTORY THINGY:
 shopt -s histappend
