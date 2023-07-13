@@ -1,19 +1,22 @@
 #!/bin/bash
 
-git clone --bare https://github.com/purplesunk/dotfiles "$HOME"/.dotfiles
+if [ ! -f "$HOME"/.dotfiles ]; then
+    git clone --bare https://github.com/purplesunk/dotfiles "$HOME"/.dotfiles
+fi
 
 function config {
-   /usr/bin/git --git-dir="$HOME"/.dotfiles/ --work-tree="$HOME" "$@"
+    git --git-dir="$HOME"/.dotfiles/ --work-tree="$HOME" "$@"
 }
 
-if config checkout; then
-  echo "Checked out config.";
-  else
+if config checkout > /dev/null; then
+    echo "Checked out config.";
+else
     echo "Backing up pre-existing dot files.";
     OUTPUT=$(config checkout 2>&1 | grep -E "\s+\." | awk {'print $1'})
     echo "${OUTPUT}" | sed -E 's/(.*\/).*/\1/' | uniq | xargs -I{} mkdir -p "$HOME"/.config-backup/{}
     echo "${OUTPUT}" | xargs -I{} mv {} "$HOME"/.config-backup/{}
     config checkout
+    echo "Checked out config.";
 fi;
 
 config config status.showUntrackedFiles no
