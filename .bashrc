@@ -13,6 +13,8 @@
 
 shopt -s checkwinsize # Check rows and columns before running command
 shopt -s autocd # Change directories without writing cd
+
+# History
 shopt -s histappend 
 PROMPT_COMMAND='history -a'
 
@@ -25,10 +27,14 @@ function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ (\1$(parse_git_dirty))/"
 }
 
-#PROMPT_DIRTRIM=3
-export PS1="\[\033[34m\]\u@\h \[\033[32m\]\W\[\033[33m\]\$(parse_git_branch)\[\033[00m\] \$ "
+# Check SSH
+function check_ssh {
+  [[ -n "SSH_CLIENT" ]] || [[ -n "SSH_TTY" ]] && \
+    echo "@$HOSTNAME "
+}
 
-
+PROMPT_DIRTRIM=3
+export PS1="\[\033[34m\]\$(check_ssh)\[\033[32m\]\W\[\033[33m\]\$(parse_git_branch)\[\033[00m\] \$ "
 
 # ALIASES, maybe move this to another file?
 alias ls='ls -h --color=auto --group-directories-first'
