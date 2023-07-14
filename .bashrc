@@ -41,6 +41,8 @@ export PS1="\[\033[31m\]\$(check_ssh)\[\033[32m\]\w\[\033[33m\]\$(parse_git_bran
 alias ls='ls -h --color=auto --group-directories-first'
 alias ll='ls -la -h --color=auto --group-directories-first'
 alias config='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias cs='git --git-dir=$HOME/.dotfiles --work-tree=$HOME status'
+alias gs='git status'
 # alias nvidia-settings='nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
 
 alias fstp='nvim $HOME/.local/bin/fedora-setup.sh'
