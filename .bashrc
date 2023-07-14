@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Source global definitions
 [[ -f /etc/bashrc ]] && \
@@ -29,12 +29,13 @@ function parse_git_branch {
 
 # Check SSH
 function check_ssh {
-  [[ -n "SSH_CLIENT" ]] || [[ -n "SSH_TTY" ]] && \
+  if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
     echo "@$HOSTNAME "
+  fi
 }
 
 PROMPT_DIRTRIM=3
-export PS1="\[\033[34m\]\$(check_ssh)\[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] \$ "
+export PS1="\[\033[31m\]\$(check_ssh)\[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] \$ "
 
 # ALIASES, maybe move this to another file?
 alias ls='ls -h --color=auto --group-directories-first'
