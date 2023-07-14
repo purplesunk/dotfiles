@@ -15,12 +15,12 @@ return {
     --     end,
     -- },
 
-    -- {
-    --     "folke/tokyonight.nvim",
-    --     lazy = false,
-    --     priority = 1000,
-    --     opts = {},
-    -- },
+    {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+    },
 
     {
         "catppuccin/nvim",
@@ -48,7 +48,7 @@ return {
                 config = true
             },
             'williamboman/mason-lspconfig.nvim',
-            { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+            -- { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
             'folke/neodev.nvim',
         },
         config = function()
@@ -103,21 +103,6 @@ return {
         build = ':TSUpdate',
         config = function()
             require('plugins.configs.treesitter')
-        end,
-    },
-
-    -- {
-    --     'nvim-lualine/lualine.nvim',
-    --     config = function ()
-    --         require('plugins.configs.lualine')
-    --     end,
-    -- },
-
-    {
-        "nvim-tree/nvim-tree.lua",
-        version = "*",
-        config = function()
-            require("nvim-tree").setup {}
         end,
     },
 
