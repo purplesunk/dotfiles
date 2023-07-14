@@ -7,9 +7,6 @@ if [ "$#" -eq 0 ];then
     exit 1
 fi
 
-fonts_dir="$XDG_DATA_HOME"/fonts
-[[ ! -d "$fonts_dir" ]] && mkdir -p "$fonts_dir"
-
 # Make something to get the lastest url of the releases/tag curl releases/tag 
 version=$(curl https://github.com/ryanoasis/nerd-fonts/tags  2>&1 | grep -m 1 -E 'releases/tag/v' | sed -E 's/^.*releases\/tag\/(v[0-9]*\.[0-9]\.[0-9])\".*$/\1/')
 
@@ -21,6 +18,10 @@ do
         exit 0
     fi
 done
+
+# Make the fonts directory if not found
+fonts_dir="$XDG_DATA_HOME"/fonts
+[[ ! -d "$fonts_dir" ]] && mkdir -p "$fonts_dir"
 
 for font in "$@"
 do
