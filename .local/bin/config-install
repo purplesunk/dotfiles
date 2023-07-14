@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-if [ ! -f "$HOME"/.dotfiles ]; then
+if [ ! -d "$HOME"/.dotfiles ]; then
     git clone --bare https://github.com/purplesunk/dotfiles "$HOME"/.dotfiles
 fi
 
