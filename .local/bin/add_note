@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+note_location="$HOME/notes/$(date '+%Y%m%d')_note"
+
+echo -e "\n-- $(date '+%H:%M') -- " >> $note_location
+
+$EDITOR +% +start! "$note_location"
