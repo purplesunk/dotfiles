@@ -47,5 +47,14 @@ alias gs='git status'
 
 alias fstp='nvim $HOME/.local/bin/fedora-setup.sh'
 
-# unset rc
-# Don't know what this does
+function add_note {
+  note_location="$HOME/notes/$(date '+%Y%m%d')_note"
+  echo -e "\n-- $(date '+%H:%M') -- " >> $note_location
+  $EDITOR +% +start! "$note_location"
+}
+
+function continue_note {
+  note_location="$HOME/notes/$(date '+%Y%m%d')_note"
+  $EDITOR +% +start! "$note_location"
+}
+

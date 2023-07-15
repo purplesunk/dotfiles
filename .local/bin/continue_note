@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-note_location="$HOME/notes/$(date '+%Y%m%d')_note"
-
-$EDITOR +% +start! "$note_location"
