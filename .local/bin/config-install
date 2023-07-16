@@ -1,26 +1,31 @@
 #!/usr/bin/env bash
 
-if [ ! -d "$HOME"/.dotfiles ]; then
-    git clone --bare https://github.com/purplesunk/dotfiles "$HOME"/.dotfiles
-fi
-
 function config {
     git --git-dir="$HOME"/.dotfiles/ --work-tree="$HOME" "$@"
 }
 
-if config checkout 2> /dev/null; then
-    echo "Checked out config.";
-else
-    echo "Backing up pre-existing dot files.";
-    OUTPUT=$(config checkout 2>&1 | grep -E "\s+\." | awk {'print $1'})
-    echo "${OUTPUT}" | sed -E 's/(.*\/).*/\1/' | uniq | xargs -I{} mkdir -p "$HOME"/.config-backup/{}
-    echo "${OUTPUT}" | xargs -I{} mv {} "$HOME"/.config-backup/{}
-    config checkout
-    echo "Checked out config.";
-fi;
+if [ ! -d "$HOME"/.dotfiles ]; then
+    git clone --bare https://github.com/purplesunk/dotfiles "$HOME"/.dotfiles
 
-config config status.showUntrackedFiles no
+    if config checkout 2> /dev/null; then
+        echo "Checked out config.";
+    else
+        echo "Backing up pre-existing dot files.";
+        OUTPUT=$(config checkout 2>&1 | grep -E "\s+\." | awk {'print $1'})
+        echo "${OUTPUT}" | sed -E 's/(.*\/).*/\1/' | uniq | xargs -I{} mkdir -p "$HOME"/.config-backup/{}
+        echo "${OUTPUT}" | xargs -I{} mv {} "$HOME"/.config-backup/{}
+        config checkout
+        echo "Checked out config.";
+    fi;
+
+    config config status.showUntrackedFiles no
+fi
 
 if [ "$OSTYPE" = "msys" ]; then
     # Run windows script for doing symbolics links to config things
+    echo "Hello"
+else
+    # Some folders that need to be there for bash_profile to work
+    [[ ! -d "$XDG_DATA_HOME"/wineprefixes ]] && mkdir -p "$XDG_DATA_HOME"/wineprefixes
+    [[ ! -d "$XDG_STATE_HOME"/bash ]] && mkdir -p "$XDG_STATE_HOME"/bash
 fi

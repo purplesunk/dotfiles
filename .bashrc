@@ -25,7 +25,6 @@ function parse_git_dirty {
 }
 function parse_git_branch {
   git branch --no-color --format=%\(refname:short\) 2> /dev/null | sed -e "s/\(.*\)/ (\1$(parse_git_dirty))/"
-
 }
 
 #PROMPT_DIRTRIM=3
@@ -49,4 +48,3 @@ function add_note {
 function continue_note {
   $EDITOR +% +start! "$NOTES_DIR/$(date '+%Y%m%d')_note"
 }
-
