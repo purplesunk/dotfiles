@@ -49,3 +49,6 @@ function add_note {
 function continue_note {
   nvim +% +start! "$HOME/notes/$(date '+%Y%m%d')_note"
 }
+
+alias an='add_note'
+alias cn='continue_note'
