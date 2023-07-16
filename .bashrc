@@ -21,21 +21,15 @@ PROMPT_COMMAND='history -a'
 # PROMPT, Maybe move this to another file?
 # Git branch
 function parse_git_dirty {
-  [[ $(git status --porcelain 2> /dev/null) ]] && echo "*"
+  [[ $(git status --porcelain 2> /dev/null) ]] && echo -n "*"
 }
 function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ (\1$(parse_git_dirty))/"
+  git branch --no-color --format=%\(refname:short\) 2> /dev/null | sed -e "s/\(.*\)/ (\1$(parse_git_dirty))/"
+
 }
 
-# Check SSH
-function check_ssh {
-  if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    echo "@$HOSTNAME "
-  fi
-}
-
-PROMPT_DIRTRIM=3
-export PS1="\[\033[31m\]\$(check_ssh)\[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] \$ "
+#PROMPT_DIRTRIM=3
+export PS1="\[\033[35m\]\u\[\033[31m\]@\h \[\033[32m\]\W\[\033[33m\]\$(parse_git_branch)\[\033[00m\] \$ "
 
 # ALIASES, maybe move this to another file?
 alias ls='ls -h --color=auto --group-directories-first'
@@ -48,13 +42,11 @@ alias gs='git status'
 alias fstp='nvim $HOME/.local/bin/fedora-setup.sh'
 
 function add_note {
-  note_location="$HOME/notes/$(date '+%Y%m%d')_note"
-  echo -e "\n-- $(date '+%H:%M') -- " >> $note_location
-  $EDITOR +% +start! "$note_location"
+  echo -e "\n-- $(date '+%H:%M') -- " >> "$NOTES_DIR/$(date '+%Y%m%d')_note"
+  $EDITOR +% +start! "$NOTES_DIR/$(date '+%Y%m%d')_note"
 }
 
 function continue_note {
-  note_location="$HOME/notes/$(date '+%Y%m%d')_note"
-  $EDITOR +% +start! "$note_location"
+  $EDITOR +% +start! "$NOTES_DIR/$(date '+%Y%m%d')_note"
 }
 
