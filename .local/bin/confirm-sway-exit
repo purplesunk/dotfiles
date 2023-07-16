@@ -1,3 +1,0 @@
-#!/bin/sh
-
-confirm-menu "Are you sure you want to close sway session?" "swaymsg exit"
