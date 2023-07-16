@@ -22,8 +22,7 @@ if [ ! -d "$HOME"/.dotfiles ]; then
 fi
 
 if [ "$OSTYPE" = "msys" ]; then
-    # Run windows script for doing symbolics links to config things
-    echo "Hello"
+    . "$HOME"/.local/bin/windows-config.ps1
 else
     # Some folders that need to be there for bash_profile to work
     [[ ! -d "$XDG_DATA_HOME"/wineprefixes ]] && mkdir -p "$XDG_DATA_HOME"/wineprefixes
