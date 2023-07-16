@@ -1,0 +1,8 @@
+#TODO: Make elevated script
+
+New-Item -ItemType SymbolicLink -Target $HOME\.config\powershell\profile.ps1 -Path $HOME\Documents\PowerShell\profile.ps1
+
+New-Item -ItemType SymbolicLink -Target $HOME\.config\git\config -Path $HOME\.gitconfig
+
+I don't even know how the comments are in here
+# New-Item -ItemType SymbolicLink -Target $HOME\.config\powershell\profile.ps1 -Path $HOME\Documents\PowerShell\profile.ps1
