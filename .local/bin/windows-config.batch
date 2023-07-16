@@ -1,3 +1,5 @@
+#!/usr/bin/env powershell
+
 #TODO: Make elevated script
 
 New-Item -ItemType SymbolicLink -Target $HOME\.config\powershell\profile.ps1 -Path $HOME\Documents\PowerShell\profile.ps1
