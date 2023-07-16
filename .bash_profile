@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 
-[[ -f "$HOME"/.bashrc ]] && . "$HOME"/.bashrc
+export EDITOR=nvim
+export BROWSER=firefox
+export NOTES_DIR="$HOME"/notes
 
 # Profile file. Runs on login. Environmental variables are set here.
 # Adds `~/.local/bin` to $PATH
 PATH="$PATH:/usr/local/bin:/home/$USER/.local/bin"
-
-export EDITOR=nvim
-export BROWSER=firefox
-export NOTES_DIR="$HOME"/notes
 
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE_HOME="$HOME"/.cache
