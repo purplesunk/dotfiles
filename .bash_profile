@@ -2,7 +2,6 @@
 
 export EDITOR=nvim
 export BROWSER=firefox
-export NOTES_DIR="$HOME"/notes
 
 # Profile file. Runs on login. Environmental variables are set here.
 # Adds `~/.local/bin` to $PATH
