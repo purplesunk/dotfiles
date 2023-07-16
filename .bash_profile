@@ -8,6 +8,7 @@ PATH="$PATH:/usr/local/bin:/home/$USER/.local/bin"
 
 export EDITOR=nvim
 export BROWSER=firefox
+export NOTES_DIR="$HOME"/notes
 
 if [ "$OSTYPE" = "linux-gnu" ]; then
 	. "$HOME"/.config/cleanup
