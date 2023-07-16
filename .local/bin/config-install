@@ -8,7 +8,7 @@ function config {
     git --git-dir="$HOME"/.dotfiles/ --work-tree="$HOME" "$@"
 }
 
-if config checkout > /dev/null; then
+if config checkout 2> /dev/null; then
     echo "Checked out config.";
 else
     echo "Backing up pre-existing dot files.";
@@ -20,3 +20,7 @@ else
 fi;
 
 config config status.showUntrackedFiles no
+
+if [ "$OSTYPE" = "msys" ]; then
+    # Run windows script for doing symbolics links to config things
+fi
