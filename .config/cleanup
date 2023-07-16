@@ -13,7 +13,7 @@ export XDG_STATE_HOME="$HOME"/.local/state
 
 # WINE NEEDS:
 [[ ! -d "$XDG_DATA_HOME"/wineprefixes ]] && mkdir -p "$XDG_DATA_HOME"/wineprefixes
-export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
+export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 
 # NVIDIA NEEDS:
 # export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv 
