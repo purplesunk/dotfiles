@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+[[ -f "$HOME"/.bashrc ]] && . "$HOME"/.bashrc
+
 export EDITOR=nvim
 export BROWSER=firefox
 
