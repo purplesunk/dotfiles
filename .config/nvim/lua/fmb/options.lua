@@ -40,7 +40,7 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = 'menuone,noselect,noinsert'
 vim.o.backspace = 'indent,eol,start'
 
 -- NOTE: You should make sure your terminal supports this
