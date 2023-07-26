@@ -33,7 +33,7 @@ exec swayidle -w \
 # INPUT CONFIGURATION
 input * {
     xkb_layout "latam"
-#    xkb_options caps:escape
+    xkb_options caps:escape
 }
 
 input <identifier> xkb_model "pc101"
