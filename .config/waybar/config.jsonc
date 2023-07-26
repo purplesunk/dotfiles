@@ -87,13 +87,11 @@
     "custom/powermenu": {
         "format": "",
         "on-click": "",
-        "tooltip": true,
-        "tooltip-format": "Power Menu"
+        "tooltip": false,
     },
     "custom/launcher": {
         "format": "",
         "on-click": "fuzzel",
-        "tooltip": true,
-        "tooltip-format": "Launch a Program"
+        "tooltip": false,
     }
 }
