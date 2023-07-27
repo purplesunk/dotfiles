@@ -23,8 +23,4 @@ fi
 
 if [ "$OSTYPE" = "msys" ]; then
     . "$HOME"/.local/bin/windows-config.ps1
-else
-    # Some folders that need to be there for bash_profile to work
-    [[ ! -d "$XDG_DATA_HOME"/wineprefixes ]] && mkdir -p "$XDG_DATA_HOME"/wineprefixes
-    [[ ! -d "$XDG_STATE_HOME"/bash ]] && mkdir -p "$XDG_STATE_HOME"/bash
 fi
