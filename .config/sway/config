@@ -23,7 +23,7 @@ for_window [app_id="Alacritty" title="pulsemixer"] floating enable
 for_window [app_id="qbittorrent" title="Elegir ruta"] floating enable
 
 # BACKGROUND
-output HDMI-A-1 mode 1920x1080 pos 1920 0
+# output HDMI-A-1 mode 1920x1080 pos 1920 0 # Put monitor to the left
 output * bg ~/.cache/wallpaper fill
 
 # SCREEN OFF WHEN IDLE
