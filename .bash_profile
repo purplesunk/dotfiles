@@ -18,8 +18,10 @@ export XDG_STATE_HOME="$HOME"/.local/state
 # NEWSBOAT NEEDS:
 # mkdir -p "$XDG_DATA_HOME"/newsboat "$XDG_CONFIG_HOME"/newsboat
 # WINE NEEDS:
+[[ ! -d "$XDG_DATA_HOME"/wineprefixes ]] && mkdir -p "$XDG_DATA_HOME"/wineprefixes
 export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 # BASH AND BASH COMPLETION:
+[[ ! -d "$XDG_STATE_HOME"/bash ]] && mkdir -p "$XDG_STATE_HOME"/bash
 export HISTFILE="$XDG_STATE_HOME"/bash/history
 export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash-completion/bash_completion
 # GTK:
@@ -29,3 +31,7 @@ export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash-completion/bash_complet
 # export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 # export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
 # export ICEAUTHORITY="$XDG_CACHE_HOME/ICEauthority"
+
+if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+  exec startw
+fi
