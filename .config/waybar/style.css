@@ -22,7 +22,7 @@ window#waybar.empty {
 window#waybar.hidden {
 }
 
-/* If someday i want gaps again
+/* If someday i want gaps again (shadow for the bar)
 window#waybar {
     background-color: transparent;
     border: none;
