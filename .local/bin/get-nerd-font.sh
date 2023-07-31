@@ -19,6 +19,7 @@ do
     fi
 done
 
+# Should change wget with curl? And use tar instead of zip?
 # Make the fonts directory if not found
 fonts_dir="$XDG_DATA_HOME"/fonts
 [[ ! -d "$fonts_dir" ]] && mkdir -p "$fonts_dir"
