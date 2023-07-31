@@ -1,15 +1,20 @@
 #!/bin/sh
 
 export XDG_CURRENT_DESKTOP=sway
-export GDK_BACKBEND=wayland
-export CLUTTER_BACKBEND=wayland
-export MOZ_ENABLE_WAYLAND=1
+export XDG_SESSION_TYPE=wayland
 
-#export QT_STYLE_OVERRIDE=kvantum
-#export QT_QPA_PLATFORM=wayland
-#export QT_QPA_PLATFORMTHEME="qt5ct"
+export GDK_BACKEND=wayland,x11
+export SDL_VIDEODRIVER=wayland
+export CLUTTER_BACKBEND=wayland
+
+export QT_QPA_PLATFORM="wayland;xcb"
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_WAYLAND_DISABLE_WINDOWSDECORATION=1
+#QT_QPA_PLATFORMTHEME=qt5ct
+
 
 #export BEMENU_BACKEND=wayland
 #export BEMENU_OPTS="--monitor 'all' --line-height '26' --no-overlap --list '10' --nb '#373b41' --hb '#373b41' --sb '#373b41' --tb '#373b41' --fb '#373b41' --scb '#373b41' --hf '#de935f' --tf '#de935f'"
+
 
 exec sway "$@"
