@@ -27,8 +27,6 @@ function list_fonts() {
 function check_output() {
     if [ -d "$1" ]; then
         fonts_dir="$1"
-    elif [ -d "$PWD/$1" ]; then
-        fonts_dir="$PWD/$1"
     else
         echo "Invalid directory."
         exit 1
