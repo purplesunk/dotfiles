@@ -1,43 +1,87 @@
 #!/usr/bin/env bash
 
-if [ "$#" -eq 0 ];then
+function show_usage() {
     echo "USAGE:"
-    echo "get-nerd-fonts font_name"
-    echo "get-nerd-fonts -l           Get list of fonts"
+    echo "get-nerd-fonts -[options] [font_names] -o [dir]"
+    echo
+    echo "OPTIONS:"
+    echo "h     Show usage"
+    echo "l     Get list of fonts"
+    echo "o     Set output directory ($XDG_DATA_HOME/fonts default)"
     exit 0
+}
+
+if [ "$#" -eq 0 ]; then
+    show_usage
 fi
 
 # Get the lastest url of the releases/tag
-version=$(curl https://github.com/ryanoasis/nerd-fonts/tags  2>&1 | grep -m 1 -E 'releases/tag/v' | sed -E 's/^.*href=\"(.*[0-9])".*$/https:\/\/github.com\1/')
+lastest_url=$(curl https://github.com/ryanoasis/nerd-fonts/tags  2>&1 | grep -m 1 -E 'releases/tag/v' | sed -E 's/^.*href=\"(.*[0-9])".*$/https:\/\/github.com\1/')
+link_list=$(curl -s "$lastest_url" 2>&1 | grep -i ".*\.tar" | grep -v 'FontPatcher' | sed -E 's/^.*href=\"(.*)".*$/\1/')
 
+function list_fonts() {
+    echo "$link_list" | sed -E 's/^.*\/(.*)\.tar.*$/\1/'
+    exit 0
+}
 
-# if -l list the avalible fonts
-for args in "$@"
-do
-    if [ "$args" = "-l" ]; then
-        curl -s "$version" | grep -i -E '.*\.tar' | grep -v 'FontPatcher' | sed -E 's/^.*\">(.*)\.tar.*$/\1/'
-        exit 0
+function check_output() {
+    if [ -d "$1" ]; then
+        fonts_dir="$1"
+    elif [ -d "$PWD/$1" ]; then
+        fonts_dir="$PWD/$1"
+    else
+        echo "Invalid directory."
+        exit 1
     fi
+}
+
+font_list=""
+get_output=false
+
+for arg in "$@"
+do
+    if $get_output; then
+        check_output "$arg"
+        get_output=false
+        continue
+    fi
+
+    case $arg in
+        "-h") 
+            show_usage;;
+        "-l") 
+            list_fonts;;
+        "-o") 
+            get_output=true
+            continue;;
+
+        *) font_list+="$arg ";;
+    esac
 done
 
-# Make the fonts directory if not found
-fonts_dir="$XDG_DATA_HOME"/fonts
-[[ ! -d "$fonts_dir" ]] && mkdir -p "$fonts_dir"
+# If no output is especified use fonts directory
+if [ ! -v fonts_dir ]; then
+    if [ -v XDG_DATA_HOME ]; then
+        fonts_dir="$XDG_DATA_HOME"/fonts
+    else 
+        fonts_dir="$HOME"/.fonts
+    fi
+fi
 
-for font in "$@"
+for font in $font_list
 do
     # Check if I already have the fonts
     check_installed=$(find "$fonts_dir/." -iname "*$font*NerdFont*")
     if [ -n "$check_installed" ]; then
         echo "$font already installed."
     else
-        link=$(curl -s "$version" | grep -i "$font\.tar" | grep -v 'FontPatcher' | sed -E 's/^.*href=\"(.*)".*$/\1/')
+        link=$(echo "$link_list" | grep -i "$font")
 
         if [ -z "$link" ]; then
             echo "Could not find the font: $font"
-        elif wget -c -q --show-progress --progress=bar:force "$link" -O "$font".tar 2>&1; then
+        elif wget -c -q --show-progress --progress=bar:force "$link" -O /tmp/"$font".tar 2>&1; then
             mkdir -p "$fonts_dir"/"$font"
-            tar -xvf "$font".tar -C "$fonts_dir"/"$font" && echo "$font installed." && rm "$font".tar
+            tar -xf /tmp/"$font".tar -C "$fonts_dir"/"$font" && echo "$font installed." && rm /tmp/"$font".tar
         fi
     fi
 done
