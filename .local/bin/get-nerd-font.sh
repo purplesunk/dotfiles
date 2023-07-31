@@ -4,7 +4,7 @@ if [ "$#" -eq 0 ];then
     echo "USAGE:"
     echo "get-nerd-fonts font_name"
     echo "get-nerd-fonts -l           Get list of fonts"
-    exit 1
+    exit 0
 fi
 
 # Get the lastest url of the releases/tag
@@ -17,6 +17,7 @@ do
     if [ "$args" = "-l" ]; then
         curl -s "$version" | grep -i -E '.*\.tar' | grep -v 'FontPatcher' | sed -E 's/^.*\">(.*)\.tar.*$/\1/'
         exit 0
+    fi
 done
 
 # Make the fonts directory if not found
