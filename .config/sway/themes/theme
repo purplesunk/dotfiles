@@ -1,7 +1,7 @@
 # Theme config:
 
 # Font:
-font pango:ComicShannsMono Nerd Font 13px
+font pango:JetBrainsMono Nerd Font 13px
 
 # target                 title     bg    text   indicator  border
 client.focused           $pink     $base $text  $rosewater $pink
