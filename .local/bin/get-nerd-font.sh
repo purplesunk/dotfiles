@@ -35,6 +35,7 @@ function check_output() {
 
 font_list=""
 get_output=false
+check_installation=true
 
 for arg in "$@"
 do
@@ -51,6 +52,7 @@ do
             list_fonts;;
         "-o") 
             get_output=true
+            check_installation=false
             continue;;
 
         *) font_list+="$arg ";;
@@ -69,17 +71,21 @@ fi
 for font in $font_list
 do
     # Check if I already have the fonts
-    check_installed=$(find "$fonts_dir/." -iname "*$font*NerdFont*")
+    if $check_installation; then
+        check_installed=$(find "$fonts_dir/." -iname "*$font*NerdFont*")
+    fi
+
     if [ -n "$check_installed" ]; then
         echo "$font already installed."
     else
         link=$(echo "$link_list" | grep -i "$font")
+        file=$(echo "$link" | sed -E 's/.*\/(.*)/\1/')
 
         if [ -z "$link" ]; then
             echo "Could not find the font: $font"
-        elif wget -c -q --show-progress --progress=bar:force "$link" -O /tmp/"$font".tar 2>&1; then
+        elif wget -c -q --show-progress --progress=bar:force "$link" -O /tmp/"$file" 2>&1; then
             mkdir -p "$fonts_dir"/"$font"
-            tar -xf /tmp/"$font".tar -C "$fonts_dir"/"$font" && echo "$font installed." && rm /tmp/"$font".tar
+            tar -xf /tmp/"$file" -C "$fonts_dir"/"$font" && echo "$font installed." && rm /tmp/"$file"
         fi
     fi
 done
