@@ -1,26 +1,4 @@
 return {
-    -- {
-    --     "neanias/everforest-nvim",
-    --     version = false,
-    --     lazy = false,
-    --     priority = 1000, -- make sure to load this before all the other start plugins
-    --     config = function()
-    --         require("everforest").setup({
-    --             background = "hard",
-    --             transparent_background_level = 0,
-    --             italics = false,
-    --             disable_italic_comments = true,
-    --         })
-    --         vim.cmd([[colorscheme everforest]])
-    --     end,
-    -- },
-
-    {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000,
-        opts = {},
-    },
 
     {
         "catppuccin/nvim",
@@ -32,7 +10,7 @@ return {
         end,
     },
 
-    "nvim-lua/plenary.nvim",
+    'nvim-lua/plenary.nvim',
     'tpope/vim-sleuth',
     'tpope/vim-surround',
 
@@ -48,7 +26,6 @@ return {
                 config = true
             },
             'williamboman/mason-lspconfig.nvim',
-            -- { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
             'folke/neodev.nvim',
         },
         config = function()
