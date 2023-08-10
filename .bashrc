@@ -45,15 +45,15 @@ alias fstp='nvim $HOME/.local/bin/fedora-setup.sh'
 
 function add_note {
   if [ ! -f "$NOTES_DIR/$(date '+%Y%m%d')_note" ]; then
-    echo -e "#$(date '+%A %d of %B of %Y')" >> "$NOTES_DIR/$(date '+%Y%m%d')_note"
+    echo -e "# $(date '+%A %d of %B of %Y')" >> "$NOTES_DIR/$(date '+%Y%m%d')_note.md"
   fi
 
-  echo -e "\n##Time: $(date '+%H:%M')\n##Title: " >> "$NOTES_DIR/$(date '+%Y%m%d')_note"
-  $EDITOR +% +start! "$NOTES_DIR/$(date '+%Y%m%d')_note"
+  echo -e "\n## Time: $(date '+%H:%M')\n## Title: " >> "$NOTES_DIR/$(date '+%Y%m%d')_note.md"
+  $EDITOR +% +start! "$NOTES_DIR/$(date '+%Y%m%d')_note.md"
 }
 
 function continue_note {
-  $EDITOR +% +start! "$NOTES_DIR/$(date '+%Y%m%d')_note"
+  $EDITOR +% +start! "$NOTES_DIR/$(date '+%Y%m%d')_note.md"
 }
 
 alias an='add_note'
