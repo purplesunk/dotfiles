@@ -30,33 +30,12 @@ function parse_git_branch {
 #PROMPT_DIRTRIM=3
 export PS1="\[\033[35m\]\u\[\033[31m\]@\h \[\033[32m\]\W\[\033[33m\]\$(parse_git_branch)\[\033[00m\] \$ "
 
-# ALIASES, maybe move this to another file?
+# ALIASES
 alias ls='ls -h --color=auto --group-directories-first'
 alias ll='ls -la -h --color=auto --group-directories-first'
 alias config='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias cs='git --git-dir=$HOME/.dotfiles --work-tree=$HOME status'
 alias gs='git status'
 # alias nvidia-settings='nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
-
-alias fstp='nvim $HOME/.local/bin/fedora-setup.sh'
-
-[[ -z "$NOTES_DIR" ]] && export NOTES_DIR="$HOME"/notes
-[[ -z "$EDITOR" ]] && export EDITOR=nvim
-
-function add_note {
-  if [ ! -f "$NOTES_DIR/$(date '+%Y%m%d')_note" ]; then
-    echo -e "# $(date '+%A %d of %B of %Y')" >> "$NOTES_DIR/$(date '+%Y%m%d')_note.md"
-  fi
-
-  echo -e "\n## Time: $(date '+%H:%M')\n## Title: " >> "$NOTES_DIR/$(date '+%Y%m%d')_note.md"
-  $EDITOR +% +start! "$NOTES_DIR/$(date '+%Y%m%d')_note.md"
-}
-
-function continue_note {
-  $EDITOR +% +start! "$NOTES_DIR/$(date '+%Y%m%d')_note.md"
-}
-
-alias an='add_note'
-alias cn='continue_note'
 
 set -o vi
