@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+zettle_dir="$HOME/zettlekasten"
+date_now="$(date -u '+%Y%m%d%H%M%S')"
+new_zettle_dir="$zettle_dir/$date_now"
+
+mkdir "$new_zettle_dir"
+
+# Should add something to generate a template or something
+nvim +start "$new_zettle_dir/README.md"
+
+# If it is not saved remove the directory (Le va a faltar chiche si uso template)
+if [ ! -s "$new_zettle_dir/README.md" ]; then
+    rmdir "$new_zettle_dir"
+fi
