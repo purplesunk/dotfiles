@@ -1,15 +1,22 @@
 #!/usr/bin/env bash
 
-zettle_dir="$HOME/zettlekasten"
+notes_dir="$HOME/zettlekasten"
 date_now="$(date -u '+%Y%m%d%H%M%S')"
-new_zettle_dir="$zettle_dir/$date_now"
+new_note_dir="$notes_dir/$date_now"
+new_note="$new_note_dir/README.md"
 
-mkdir "$new_zettle_dir"
+mkdir "$new_note_dir"
 
 # Should add something to generate a template or something
-nvim +start "$new_zettle_dir/README.md"
+nvim +start "$new_note"
 
 # If it is not saved remove the directory (Le va a faltar chiche si uso template)
-if [ ! -s "$new_zettle_dir/README.md" ]; then
-    rmdir "$new_zettle_dir"
+if [ ! -s "$new_note" ]; then
+    rmdir "$new_note_dir"
+else
+    git --git-dir="$notes_dir/.git" --work-tree="$notes_dir" add "$new_note"
+    git --git-dir="$notes_dir/.git" --work-tree="$notes_dir" commit -m "$(sed -n '1s/^#//p' $new_note)"
+#     git --git-dir="$notes_dir/.git" --work-tree="$notes_dir" push
 fi
+
+
