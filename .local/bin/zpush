@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+notes_dir="$HOME/zettlekasten"
+
+git --git-dir="$notes_dir/.git" --work-tree="$notes_dir" push
