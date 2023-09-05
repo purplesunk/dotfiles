@@ -78,6 +78,7 @@ do
     if [ -n "$check_installed" ]; then
         echo "$font already installed."
     else
+        # problem with iosevka and iosevkaterm and ubuntu fonts maybe..
         link=$(echo "$link_list" | grep -i "$font")
         file=$(echo "$link" | sed -E 's/.*\/(.*)/\1/')
 
