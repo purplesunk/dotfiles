@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-[[ -f "$HOME"/.bashrc ]] && . "$HOME"/.bashrc
+[[ -f "$HOME"/.bashrc ]] && \
+	. "$HOME"/.bashrc
 
 export EDITOR=nvim
 
@@ -31,6 +32,6 @@ export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash-completion/bash_complet
 # export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
 # export ICEAUTHORITY="$XDG_CACHE_HOME/ICEauthority"
 
-if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+if [ "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   exec startw
 fi
