@@ -3,11 +3,10 @@
 [[ -f "$HOME"/.bashrc ]] && . "$HOME"/.bashrc
 
 export EDITOR=nvim
-export NOTES_DIR="$HOME"/notes
 
 # Profile file. Runs on login. Environmental variables are set here.
 # Adds `~/.local/bin` to $PATH
-PATH="$PATH:/usr/local/bin:/home/$USER/.local/bin"
+PATH="$PATH:/usr/local/bin:/home/$USER/.local/bin:/home/$USER/.local/go/bin"
 
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE_HOME="$HOME"/.cache
