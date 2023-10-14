@@ -24,13 +24,20 @@ export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 [[ ! -d "$XDG_STATE_HOME"/bash ]] && mkdir -p "$XDG_STATE_HOME"/bash
 export HISTFILE="$XDG_STATE_HOME"/bash/history
 export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash-completion/bash_completion
+
 # GTK:
 # export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+
 # XORG THINGS:
 # export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 # export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 # export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
 # export ICEAUTHORITY="$XDG_CACHE_HOME/ICEauthority"
+
+# GO:
+export GOPATH="$HOME/.local/go"
+export GOBIN="$HOME/.local/go/bin"
+
 
 if [ "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   exec startw
