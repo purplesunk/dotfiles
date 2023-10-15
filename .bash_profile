@@ -7,7 +7,7 @@ export EDITOR=nvim
 
 # Profile file. Runs on login. Environmental variables are set here.
 # Adds `~/.local/bin` to $PATH
-PATH="$PATH:/usr/local/bin:/home/$USER/.local/bin:/home/$USER/.local/go/bin"
+PATH="/home/$USER/.local/bin:/home/$USER/.local/go/bin:$PATH:/usr/local/bin"
 
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE_HOME="$HOME"/.cache
@@ -37,6 +37,9 @@ export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash-completion/bash_complet
 # GO:
 export GOPATH="$HOME/.local/go"
 export GOBIN="$HOME/.local/go/bin"
+
+# W3M:
+export W3M_DIR="$XDG_STATE_HOME/w3m"
 
 
 if [ "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
