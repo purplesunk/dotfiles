@@ -37,10 +37,11 @@ alias config='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias cs='git --git-dir=$HOME/.dotfiles --work-tree=$HOME status'
 alias gs='git status'
 # alias nvidia-settings='nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
+alias path='printf "${PATH//:/\\n}\n"'
+alias "?"='duck'
 
 # Import folder aliases
 [[ -f "$HOME/.config/aliases" ]] && \
   . "$HOME/.config/aliases"
-
 
 set -o vi
