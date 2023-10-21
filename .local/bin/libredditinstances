@@ -1,0 +1,5 @@
+#!/bin/sh
+
+curl -Ss https://raw.githubusercontent.com/libreddit/libreddit-instances/master/instances.md \
+| grep http | sed -E 's/\|/ /g' \
+| awk '{print $1}'
